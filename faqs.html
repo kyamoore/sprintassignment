@@ -10,6 +10,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    /* Smooth Scrolling & Sticky Header Offset */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Prevents sticky headers from covering target titles */
+    details.faq-item,
+    section#ask-question {
+      scroll-margin-top: 110px;
+    }
+
     /* Accordion Custom Styling */
     .faq-accordion-group {
       display: flex;
@@ -91,6 +102,33 @@
       box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
     }
 
+    /* Responsive Dynamic Image Sizing Classes */
+    .responsive-faq-media {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 1.25rem 0;
+    }
+
+    .img-fluid-small {
+      width: 100%;
+      max-width: clamp(160px, 30vw, 220px);
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--neon-cyan);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+    }
+
+    .img-fluid-medium {
+      width: 100%;
+      max-width: clamp(240px, 50vw, 420px);
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--neon-purple);
+      box-shadow: 0 0 15px rgba(157, 78, 221, 0.2);
+    }
+
     /* Bottom Form Layout */
     .inquiry-form-grid {
       display: grid;
@@ -101,6 +139,12 @@
     @media (max-width: 650px) {
       .inquiry-form-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .img-fluid-small,
+      .img-fluid-medium {
+        max-width: 100%;
+        margin: 0 auto;
       }
     }
   </style>
@@ -139,7 +183,7 @@
     </nav>
   </div>
 
-  <!-- Hero Banner with Relocated Search Form -->
+  <!-- Hero Banner -->
   <section class="container" style="padding-bottom: 0;">
     <div class="glass-card hero-container glow-cyan">
       <h1>FAQs</h1>
@@ -161,7 +205,7 @@
 
     <div class="faq-accordion-group">
 
-      <!-- SECTION: OFFICIATING & SOCCER VAR -->
+      <!-- 1. OFFICIATING & VAR -->
       <details class="glass-card glow-cyan faq-item" id="officiating" open>
         <summary class="faq-question" style="color: var(--neon-cyan);">How does VAR work in soccer?</summary>
         <div class="faq-content">
@@ -190,7 +234,7 @@
         </div>
       </details>
 
-      <!-- SECTION: TENNIS HAWKEYE -->
+      <!-- 2. TENNIS HAWKEYE -->
       <details class="glass-card glow-purple faq-item" id="tennis">
         <summary class="faq-question" style="color: var(--neon-purple);">How does AI help in tennis?</summary>
         <div class="faq-content">
@@ -215,7 +259,7 @@
         </div>
       </details>
 
-      <!-- SECTION: HISTORY -->
+      <!-- 3. AI HISTORY -->
       <details class="glass-card glow-pink faq-item" id="history">
         <summary class="faq-question" style="color: var(--neon-pink);">When was the first AI/computer used in sports?</summary>
         <div class="faq-content">
@@ -237,7 +281,7 @@
         </div>
       </details>
 
-      <!-- SECTION: MEDICAL APPLICATIONS (INCLUDES aisports2.jpeg) -->
+      <!-- 4. MEDICAL AI -->
       <details class="glass-card glow-cyan faq-item" id="medical">
         <summary class="faq-question" style="color: var(--neon-cyan);">How can AI be used medically in sports?</summary>
         <div class="faq-content">
@@ -245,10 +289,9 @@
             AI can be used to predict injury, assist surgeons in operations and help students prepare for real-life situations. Some hospitals and medical associations can train AI to <em>“identify and recognize patterns in images”</em>, which can help detect things like fractures, tumors and muscle or ligament tears.
           </p>
 
-          <!-- Medical Picture Displayed -->
-          <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; margin: 1.25rem 0;">
-            <img src="aisports2.jpeg" alt="Medical AI Sports Application" style="width: 200px; border-radius: 8px; border: 1px solid var(--neon-cyan); max-width: 100%; box-shadow: 0 0 12px rgba(0,240,255,0.2);">
-            <div style="flex: 1; min-width: 250px;">
+          <div class="responsive-faq-media">
+            <img src="aisports2.jpeg" alt="Medical AI Sports Application" class="img-fluid-small">
+            <div style="flex: 1; min-width: 220px;">
               <p style="margin-bottom: 0;">
                 It can even be used for placement of surgical devices and implants, which is very important for sport-related injuries. It can make surgeries more efficient and effective, as the AI can be trained to know the exact process for many kinds of injuries, especially ACL tears, which are common in many sports such as football, basketball and soccer.
               </p>
@@ -266,7 +309,7 @@
         </div>
       </details>
 
-      <!-- SECTION: FUTURE TRENDS (INCLUDES citythird.jpeg) -->
+      <!-- 5. FUTURE TRENDS -->
       <details class="glass-card glow-purple faq-item" id="future">
         <summary class="faq-question" style="color: var(--neon-purple);">What does the future of AI look like in sports?</summary>
         <div class="faq-content">
@@ -274,9 +317,8 @@
           <p style="margin-top: 0.75rem;">Second: it will reshape how teams build rosters. Analytics in sport are growing, and AI will only accelerate this process: the days of Moneyball-style analytics and data are long gone. AI is making it easier for teams to find diamonds in the rough.</p>
           <p style="margin-top: 0.75rem;">Finally, third: it will enhance the fan experience. We can look at Manchester City’s fan-designed third kit for the 2026/27 season, which was made with the help of AI. Sports are <em>"becoming a canvas for immersive, personalized experiences"</em>, of which AI is developing new ones every day.</p>
 
-          <!-- Fan-Designed Kit Picture Displayed -->
           <figure style="margin: 1.5rem 0; text-align: center;">
-            <img src="citythird.jpeg" alt="Athletes wearing sports kit inspired by modern design and performance technology" style="width: 100%; max-width: 700px; border-radius: 8px; border: 1px solid var(--neon-purple); height: auto; box-shadow: 0 0 15px rgba(157,78,221,0.2);">
+            <img src="citythird.jpeg" alt="Athletes wearing sports kit inspired by modern design and performance technology" class="img-fluid-medium">
             <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Manchester City's fan-designed third shirt for the 2026/27 season, partially designed by AI.</figcaption>
           </figure>
 
@@ -293,7 +335,7 @@
 
     </div>
 
-    <!-- INQUIRY FORM (BOTTOM SECTION) -->
+    <!-- 6. ASK A QUESTION -->
     <section id="ask-question" class="glass-card glow-cyan" style="padding: 2.5rem; border-radius: 12px;">
       <div style="text-align: center; margin-bottom: 1.5rem;">
         <h2 style="color: var(--neon-cyan);">Have a Question?</h2>
@@ -353,6 +395,22 @@
       <a href="#future" style="color: var(--neon-cyan); text-decoration: none; font-size: 0.85rem;">Future</a>
     </nav>
   </footer>
+
+  <!-- Script to Auto-Expand Accordions When Jump Links Are Clicked -->
+  <script>
+    function openTargetAccordion() {
+      const hash = window.location.hash;
+      if (hash) {
+        const targetElement = document.querySelector(hash);
+        if (targetElement && targetElement.tagName === 'DETAILS') {
+          targetElement.open = true;
+        }
+      }
+    }
+
+    window.addEventListener('hashchange', openTargetAccordion);
+    window.addEventListener('DOMContentLoaded', openTargetAccordion);
+  </script>
 
 </body>
 
