@@ -2,569 +2,357 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI in Sports — Frequently Asked Questions</title>
-    <style>
-        /* CSS RESET & VARIABLES */
-        :root {
-            --primary: #0052cc;
-            --primary-dark: #003d99;
-            --accent: #00b894;
-            --bg-light: #f4f7f6;
-            --card-bg: #ffffff;
-            --text-main: #2d3436;
-            --text-muted: #636e72;
-            --border-color: #dfe6e9;
-            --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI in Sports — Frequently Asked Questions</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Accordion Custom Styling */
+    .faq-accordion-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    details.faq-item {
+      cursor: pointer;
+      padding: 1.25rem 1.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    summary.faq-question {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #ffffff;
+    }
 
-        body {
-            font-family: var(--font-family);
-            line-height: 1.6;
-            color: var(--text-main);
-            background-color: var(--bg-light);
-        }
+    summary.faq-question::-webkit-details-marker {
+      display: none;
+    }
 
-        /* HEADER & NAVIGATION */
-        header {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #ffffff;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
+    summary.faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--neon-cyan);
+      font-weight: 700;
+      transition: transform 0.3s ease;
+    }
 
-        header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
+    details[open] summary.faq-question::after {
+      content: '−';
+      color: var(--neon-pink);
+    }
 
-        header p {
-            color: #b2bec3;
-            font-size: 1.1rem;
-        }
+    .faq-content {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      line-height: 1.6;
+    }
 
-        nav {
-            position: sticky;
-            top: 0;
-            background-color: #1e272e;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        }
+    /* Hero Search Form */
+    .hero-search-wrapper {
+      margin-top: 1.5rem;
+      max-width: 600px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            list-style: none;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+    .hero-search-form {
+      display: flex;
+      gap: 0.5rem;
+    }
 
-        nav a {
-            display: block;
-            color: #f5f6fa;
-            text-decoration: none;
-            padding: 0.8rem 1.2rem;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
+    .hero-search-input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      border: 1px solid var(--border-hud);
+      background: rgba(5, 10, 20, 0.8);
+      color: #ffffff;
+      font-family: var(--font-body);
+      font-size: 1rem;
+    }
 
-        nav a:hover,
-        nav a:focus {
-            background-color: var(--primary);
-            color: #ffffff;
-        }
+    .hero-search-input:focus {
+      outline: none;
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    }
 
-        /* MAIN CONTENT CONTAINER */
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-        }
+    /* Bottom Form Layout */
+    .inquiry-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
 
-        @media (max-width: 850px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* FAQ ARTICLES & SECTIONS */
-        section {
-            margin-bottom: 2.5rem;
-        }
-
-        .section-title {
-            font-size: 1.6rem;
-            color: var(--primary-dark);
-            border-bottom: 3px solid var(--primary);
-            padding-bottom: 0.4rem;
-            margin-bottom: 1.5rem;
-        }
-
-        article.faq-card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
-        }
-
-        article.faq-card h3 {
-            font-size: 1.25rem;
-            color: #0984e3;
-            margin-bottom: 0.8rem;
-        }
-
-        article.faq-card p {
-            margin-bottom: 1rem;
-        }
-
-        blockquote {
-            border-left: 4px solid var(--accent);
-            padding-left: 1rem;
-            margin: 1rem 0;
-            font-style: italic;
-            color: var(--text-muted);
-            background-color: #f8f9fa;
-            padding: 0.5rem 1rem;
-            border-radius: 0 4px 4px 0;
-        }
-
-        /* MEDIA EMBEDS */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 6px;
-            margin: 1rem 0;
-            background-color: #000;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .media-link {
-            display: inline-block;
-            margin-top: 0.5rem;
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .media-link:hover {
-            text-decoration: underline;
-        }
-
-        /* INFOGRAPHIC & WEARABLES GRID */
-        .infographic-card {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .info-box {
-            background-color: #f8f9fa;
-            border-radius: 6px;
-            padding: 1rem;
-            border-left: 4px solid var(--primary);
-        }
-
-        .info-box h4 {
-            font-size: 1rem;
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .info-box ul {
-            list-style-type: square;
-            padding-left: 1.2rem;
-            font-size: 0.9rem;
-        }
-
-        /* SIDEBAR & FORMS */
-        aside {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .widget {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.25rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
-        }
-
-        .widget h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-        }
-
-        /* FORM STYLING */
-        form fieldset {
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 1rem;
-        }
-
-        form legend {
-            font-weight: bold;
-            padding: 0 0.4rem;
-            color: var(--primary-dark);
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.6rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 0.9rem;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(0, 82, 204, 0.2);
-        }
-
-        button[type="submit"] {
-            width: 100%;
-            background-color: var(--primary);
-            color: #ffffff;
-            border: none;
-            padding: 0.75rem;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        button[type="submit"]:hover {
-            background-color: var(--primary-dark);
-        }
-
-        /* FOOTER */
-        footer {
-            background-color: #1e272e;
-            color: #dcdde1;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
-            border-top: 4px solid var(--primary);
-        }
-
-        footer p {
-            font-size: 0.9rem;
-        }
-
-        footer nav ul {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            list-style: none;
-            margin-top: 0.8rem;
-        }
-
-        footer nav a {
-            color: #00a8ff;
-            text-decoration: none;
-            font-size: 0.85rem;
-        }
-
-        footer nav a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    @media (max-width: 650px) {
+      .inquiry-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- SITE HEADER -->
-    <header>
-        <h1>FAQs</h1>
-    </header>
-
-    <!-- DOCUMENT NAVIGATION -->
+  <!-- Universal Header Navigation -->
+  <header>
+    <a href="home.html" class="brand-logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="var(--neon-cyan)" stroke-width="1.5" />
+        <path d="M12 2v20M2 12h20" stroke="rgba(0, 240, 255, 0.3)" stroke-width="1" />
+        <polygon points="13,3 7,13 12,13 11,21 17,11 12,11" fill="var(--neon-green)" />
+      </svg>
+      AI <span>IN SPORTS</span>
+    </a>
     <nav aria-label="Main Navigation">
-        <ul>
-            <li><a href="#officiating">Officiating & VAR</a></li>
-            <li><a href="#tennis">Tennis Hawkeye</a></li>
-            <li><a href="#history">AI History</a></li>
-            <li><a href="#medical">Medical AI</a></li>
-            <li><a href="#future">Future Trends</a></li>
-            <li><a href="#ask-question">Ask a Question</a></li>
-        </ul>
+      <a href="home.html">Home</a>
+      <a href="info.html">Information</a>
+      <a href="faqs.html" class="active">FAQs</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
     </nav>
+  </header>
 
-    <!-- MAIN CONTENT CONTAINER -->
-    <div class="container">
-        <main>
+  <!-- Sticky Category Jump Navigation -->
+  <div class="sticky-wrapper">
+    <nav class="category-nav">
+      <a href="#officiating">Officiating & VAR</a>
+      <a href="#tennis">Tennis Hawkeye</a>
+      <a href="#history">AI History</a>
+      <a href="#medical">Medical AI</a>
+      <a href="#future">Future Trends</a>
+      <a href="#ask-question">Ask a Question</a>
+    </nav>
+  </div>
 
-            <!-- FAQ SECTION: OFFICIATING & SOCCER VAR -->
-            <section id="officiating">
+  <!-- Hero Banner with Relocated Search Form -->
+  <section class="container" style="padding-bottom: 0;">
+    <div class="glass-card hero-container glow-cyan">
+      <h1>FAQs</h1>
+      <p style="color: var(--text-muted); max-width: 750px; margin: 0 auto;">
+        Explore answers to frequently asked questions about video assistant officiating, Hawk-Eye tracking, sports medical applications, and emerging technological trends.
+      </p>
 
-                <article class="faq-card">
-                    <header>
-                        <h3>How does VAR work in soccer?</h3>
-                    </header>
-                    <p>
-                        <strong>VAR</strong> stands for <em>Video Assisted Referee</em>, and is a way to ensure that officiating in soccer is correct in multiple facets of the game. There are two to three referees in a room with screens showing all possible camera angles of an event during a match, and when there is a discrepancy they examine the footage and communicate with the on-field referee. The most common is for offside rulings- the official on the field calls offside when the linesman has his flag up, and the referees in the VAR room look at the play to ensure the correct call was made.
-                    </p>
-                    <p>
-                        If the referees in the VAR room believe that the call on the field was incorrect, they tell the on-field center referee to stop play and walk over to the screen on the sideline, and look at what the VAR referees see in the replay room. The center referee then decides if <strong>"a clear and obvious error"</strong> was made, and if so, the call gets reversed. This process happens for things like red cards, cases of mistaken identity and fouls in the box leading to penalties.
-                    </p>
+      <!-- Search FAQs Form -->
+      <div class="hero-search-wrapper">
+        <form action="#search-results" method="get" class="hero-search-form">
+          <input type="search" id="faq-search" class="hero-search-input" name="q" placeholder="Enter Keyword (e.g., VAR, Hawkeye, ACL, Wearables...)" required>
+          <button type="submit" class="btn-hud">Search</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-                    <!-- VIDEO EMBED -->
-                    <figure>
-                        <div class="video-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/UB9exneQ-4A?si=Ef20NmNCyKWv63ub" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                        <figcaption>Overview on how Video Assistant Referee (VAR) works.</figcaption>
-                    </figure>
+  <main class="container" id="faqs" style="max-width: 1000px;">
 
-                    <footer>
-                        <p>
-                            Official Resource:
-                            <a class="media-link" href="https://www.premierleague.com/en/var" target="_blank" rel="noopener noreferrer">
-                                Premier League Official VAR Guidelines &rarr;
-                            </a>
-                        </p>
-                    </footer>
-                </article>
-            </section>
+    <div class="faq-accordion-group">
 
-            <!-- FAQ SECTION: TENNIS HAWKEYE -->
-            <section id="tennis">
+      <!-- SECTION: OFFICIATING & SOCCER VAR -->
+      <details class="glass-card glow-cyan faq-item" id="officiating" open>
+        <summary class="faq-question" style="color: var(--neon-cyan);">How does VAR work in soccer?</summary>
+        <div class="faq-content">
+          <p>
+            <strong>VAR</strong> stands for <em>Video Assisted Referee</em>, and is a way to ensure that officiating in soccer is correct in multiple facets of the game. There are two to three referees in a room with screens showing all possible camera angles of an event during a match, and when there is a discrepancy they examine the footage and communicate with the on-field referee. The most common is for offside rulings- the official on the field calls offside when the linesman has his flag up, and the referees in the VAR room look at the play to ensure the correct call was made.
+          </p>
+          <p style="margin-top: 0.75rem;">
+            If the referees in the VAR room believe that the call on the field was incorrect, they tell the on-field center referee to stop play and walk over to the screen on the sideline, and look at what the VAR referees see in the replay room. The center referee then decides if <strong>"a clear and obvious error"</strong> was made, and if so, the call gets reversed. This process happens for things like red cards, cases of mistaken identity and fouls in the box leading to penalties.
+          </p>
 
-                <article class="faq-card">
-                    <header>
-                        <h3>How does AI help in tennis?</h3>
-                    </header>
-                    <p>
-                        Answer: The Hawkeye system is used to determine whether balls are in or out. Multiple cameras are used to track the flight path of the ball, and then the computer that all the cameras are connected to determines where the ball landed in relation to the line in question.
-                    </p>
-                    <blockquote>
-                        "Processes the video in real-time, and tracks the path of the tennis ball on each camera."
-                    </blockquote>
-                    <p>
-                        The computer combines all the cameras to create an accurate three-dimensional representation of how the ball traveled. When the ball is deemed to be out by the computer, it makes a noise, signifying the call. Players have two challenges of the ruling, but it is highly effective in its decisions and is not often overturned.
-
-                    </p>
-                    <footer>
-                        <p>
-                            Learn more:
-                            <a class="media-link" href="https://www.topendsports.com/sport/tennis/hawkeye.htm" target="_blank" rel="noopener noreferrer">
-                                Hawk-Eye Tennis Technology Explained &rarr;
-                            </a>
-                        </p>
-                    </footer>
-                </article>
-            </section>
-
-            <!-- FAQ SECTION: HISTORY -->
-            <section id="history">
-
-
-                <article class="faq-card">
-                    <header>
-                        <h3>When was the first AI/computer used in sports?</h3>
-                    </header>
-                    <p>
-                        Most historians point to <strong>Deep Blue</strong>, the chess-playing supercomputer built by IBM. In 1997, Deep Blue made history by defeating world chess champion Garry Kasparov.
-                    </p>
-                    <p>
-                        This victory demonstrated that computers could master complex strategic games and laid the groundwork for modern sports analytics as well as platforms like Chess.com, which feature AI "bots" tuned across various skill levels.
-                    </p>
-                    <footer>
-                        <p>
-                            Historical Reference:
-                            <a class="media-link" href="https://library.olympics.com/redirect_TROVBSYVQULSZAYWJVN2MF35LAOQQBBSF7F52OZVKV2TMN5Q4FJA====/default/zoom-ai-in-sport.aspx?lg=en-GB" target="_blank" rel="noopener noreferrer">
-                                Olympic Library Archive on AI in Sport &rarr;
-                            </a>
-                        </p>
-                    </footer>
-                </article>
-            </section>
-
-            <!-- FAQ SECTION: MEDICAL APPLICATIONS -->
-            <section id="medical">
-
-                <article class="faq-card">
-                    <header>
-                        <h3>How can AI be used medically in sports?</h3>
-                    </header>
-                    <p>
-                        AI can be used to predict injury, assist surgeons in operations and help students prepare for real-life situations. Some hospitals and medical associations can train AI to <em>“identify and recognize patterns in images”</em>, which can help detect things like fractures, tumors and muscle or ligament tears.
-                    </p>
-                    <td><img src="aisports2.jpeg" alt="" width=200 style="float:left; margin-right: 10px"></td>
-                    <p >
-                        It can even be used for placement of surgical devices and implants, which is very important for sport-related injuries. It can make surgeries more efficient and effective, as the AI can be trained to know the exact process for many kinds of injuries, especially ACL tears, which are common in many sports such as football, basketball and soccer.
-
-                    </p>
-                    <footer>
-                        <p>
-                            Medical Journal Update:
-                            <a class="media-link" href="https://www.sportsmed.org/membership/sports-medicine-update/fall-2024/the-ai-revolution-is-already-here-transforming-orthopedics-in-2024-and-beyond" target="_blank" rel="noopener noreferrer">
-                                The AI Revolution Transforming Orthopedics (2024) &rarr;
-                            </a>
-                        </p>
-                    </footer>
-                </article>
-            </section>
-
-
-
-            <!-- FAQ SECTION: FUTURE TRENDS -->
-            <section id="future">
-
-                <article class="faq-card">
-                    <header>
-                        <h3>What does the future of AI look like in sports?</h3>
-                    </header>
-                    <p>The future of AI in sports points to three things happening. First: it will be used to enhance coaching. It will help make tactics more creative and “refine decision-making in real time” to help coaches react to situations in games in the most accurate way possible.</p>
-                    <p>Second: it will reshape how teams build rosters. Analytics in sport are growing, and AI will only accelerate this process: the days of Moneyball-style analytics and data are long gone. AI is making it easier for teams to find diamonds in the rough.</p>
-                    <p>Finally, third: it will enhance the fan experience. We can look at Manchester City’s fan-designed third kit for the 2026/27 season, which was made with the help of AI. Sports are <em>"becoming a canvas for immersive, personalized experiences"</em>, of which AI is developing new ones every day.</p>
-                    <!-- IMAGE EMBED -->
-                    <figure style="margin: 1.5rem 0;">
-                        <img src="citythird.jpeg" alt="Athletes wearing sports kit inspired by modern design and performance technology" style="width:100%; border-radius: 6px; height: auto;">
-                        <figcaption>Manchester City's fan-designed third shirt for the 2026/27 season, partially designed by AI.</figcaption>
-                    </figure>
-
-                    <footer>
-                        <p>
-                            Trend Analysis:
-                            <a class="media-link" href="https://www.thefuturelaboratory.com/blog/the-future-of-sport-and-ai-2025" target="_blank" rel="noopener noreferrer">
-                                The Future Laboratory: Sport and AI Report &rarr;
-                            </a>
-                        </p>
-                    </footer>
-                </article>
-            </section>
-
-        </main>
-
-        <!-- SIDEBAR WITH SEARCH & CONTACT FORMS -->
-        <aside>
-
-            <!-- SEARCH FORM -->
-            <div class="widget">
-                <h3>Search FAQs</h3>
-                <form action="#search-results" method="get">
-                    <div class="form-group">
-                        <label for="faq-search">Enter Keyword</label>
-                        <input type="search" id="faq-search" name="q" placeholder="e.g., VAR, Hawkeye, ACL, Wearables..." required>
-                    </div>
-                    <button type="submit">Search</button>
-                </form>
+          <figure style="margin: 1.25rem 0;">
+            <div class="media-wrapper">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/UB9exneQ-4A?si=Ef20NmNCyKWv63ub" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
+            <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem;">Overview on how Video Assistant Referee (VAR) works.</figcaption>
+          </figure>
 
-            <!-- INQUIRY FORM DEMONSTRATING FORM MARKUP -->
-            <div class="widget" id="ask-question">
-                <h3>Have a Question?</h3>
-                <form action="/submit-question" method="post">
-                    <fieldset>
-                        <legend>Inquiry Form</legend>
+          <footer>
+            <p style="margin-bottom: 0;">
+              Official Resource:
+              <a class="media-link" href="https://www.premierleague.com/en/var" target="_blank" rel="noopener noreferrer" style="color: var(--neon-cyan); font-weight: 600;">
+                Premier League Official VAR Guidelines &rarr;
+              </a>
+            </p>
+          </footer>
+        </div>
+      </details>
 
-                        <div class="form-group">
-                            <label for="user-name">Full Name</label>
-                            <input type="text" id="user-name" name="fullname" required placeholder="Jane Doe">
-                        </div>
+      <!-- SECTION: TENNIS HAWKEYE -->
+      <details class="glass-card glow-purple faq-item" id="tennis">
+        <summary class="faq-question" style="color: var(--neon-purple);">How does AI help in tennis?</summary>
+        <div class="faq-content">
+          <p>
+            Answer: The Hawkeye system is used to determine whether balls are in or out. Multiple cameras are used to track the flight path of the ball, and then the computer that all the cameras are connected to determines where the ball landed in relation to the line in question.
+          </p>
+          <blockquote style="border-left: 4px solid var(--neon-purple); padding-left: 1rem; margin: 1rem 0; font-style: italic; color: rgba(255, 255, 255, 0.85); background: rgba(0, 0, 0, 0.3); padding: 0.75rem 1rem; border-radius: 0 4px 4px 0;">
+            "Processes the video in real-time, and tracks the path of the tennis ball on each camera."
+          </blockquote>
+          <p>
+            The computer combines all the cameras to create an accurate three-dimensional representation of how the ball traveled. When the ball is deemed to be out by the computer, it makes a noise, signifying the call. Players have two challenges of the ruling, but it is highly effective in its decisions and is not often overturned.
+          </p>
 
-                        <div class="form-group">
-                            <label for="user-email">Email Address</label>
-                            <input type="email" id="user-email" name="email" required placeholder="jane@example.com">
-                        </div>
+          <footer>
+            <p style="margin-bottom: 0;">
+              Learn more:
+              <a class="media-link" href="https://www.topendsports.com/sport/tennis/hawkeye.htm" target="_blank" rel="noopener noreferrer" style="color: var(--neon-purple); font-weight: 600;">
+                Hawk-Eye Tennis Technology Explained &rarr;
+              </a>
+            </p>
+          </footer>
+        </div>
+      </details>
 
-                        <div class="form-group">
-                            <label for="topic">Topic Category</label>
-                            <select id="topic" name="topic" required>
-                                <option value="" disabled selected>Select a topic...</option>
-                                <option value="officiating">Officiating & VAR</option>
-                                <option value="tennis">Court Systems & Hawkeye</option>
-                                <option value="medical">Medical & Orthopedics</option>
-                                <option value="future">Future Trends</option>
-                                <option value="other">Other / General</option>
-                            </select>
-                        </div>
+      <!-- SECTION: HISTORY -->
+      <details class="glass-card glow-pink faq-item" id="history">
+        <summary class="faq-question" style="color: var(--neon-pink);">When was the first AI/computer used in sports?</summary>
+        <div class="faq-content">
+          <p>
+            Most historians point to <strong>Deep Blue</strong>, the chess-playing supercomputer built by IBM. In 1997, Deep Blue made history by defeating world chess champion Garry Kasparov.
+          </p>
+          <p style="margin-top: 0.75rem;">
+            This victory demonstrated that computers could master complex strategic games and laid the groundwork for modern sports analytics as well as platforms like Chess.com, which feature AI "bots" tuned across various skill levels.
+          </p>
 
-                        <div class="form-group">
-                            <label for="question">Your Question</label>
-                            <textarea id="question" name="question" rows="4" required placeholder="Describe your question in detail..."></textarea>
-                        </div>
+          <footer>
+            <p style="margin-bottom: 0;">
+              Historical Reference:
+              <a class="media-link" href="https://library.olympics.com/redirect_TROVBSYVQULSZAYWJVN2MF35LAOQQBBSF7F52OZVKV2TMN5Q4FJA====/default/zoom-ai-in-sport.aspx?lg=en-GB" target="_blank" rel="noopener noreferrer" style="color: var(--neon-pink); font-weight: 600;">
+                Olympic Library Archive on AI in Sport &rarr;
+              </a>
+            </p>
+          </footer>
+        </div>
+      </details>
 
-                        <button type="submit">Submit Inquiry</button>
-                    </fieldset>
-                </form>
+      <!-- SECTION: MEDICAL APPLICATIONS (INCLUDES aisports2.jpeg) -->
+      <details class="glass-card glow-cyan faq-item" id="medical">
+        <summary class="faq-question" style="color: var(--neon-cyan);">How can AI be used medically in sports?</summary>
+        <div class="faq-content">
+          <p>
+            AI can be used to predict injury, assist surgeons in operations and help students prepare for real-life situations. Some hospitals and medical associations can train AI to <em>“identify and recognize patterns in images”</em>, which can help detect things like fractures, tumors and muscle or ligament tears.
+          </p>
+
+          <!-- Medical Picture Displayed -->
+          <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; margin: 1.25rem 0;">
+            <img src="aisports2.jpeg" alt="Medical AI Sports Application" style="width: 200px; border-radius: 8px; border: 1px solid var(--neon-cyan); max-width: 100%; box-shadow: 0 0 12px rgba(0,240,255,0.2);">
+            <div style="flex: 1; min-width: 250px;">
+              <p style="margin-bottom: 0;">
+                It can even be used for placement of surgical devices and implants, which is very important for sport-related injuries. It can make surgeries more efficient and effective, as the AI can be trained to know the exact process for many kinds of injuries, especially ACL tears, which are common in many sports such as football, basketball and soccer.
+              </p>
             </div>
+          </div>
 
-        </aside>
+          <footer>
+            <p style="margin-bottom: 0;">
+              Medical Journal Update:
+              <a class="media-link" href="https://www.sportsmed.org/membership/sports-medicine-update/fall-2024/the-ai-revolution-is-already-here-transforming-orthopedics-in-2024-and-beyond" target="_blank" rel="noopener noreferrer" style="color: var(--neon-cyan); font-weight: 600;">
+                The AI Revolution Transforming Orthopedics (2024) &rarr;
+              </a>
+            </p>
+          </footer>
+        </div>
+      </details>
+
+      <!-- SECTION: FUTURE TRENDS (INCLUDES citythird.jpeg) -->
+      <details class="glass-card glow-purple faq-item" id="future">
+        <summary class="faq-question" style="color: var(--neon-purple);">What does the future of AI look like in sports?</summary>
+        <div class="faq-content">
+          <p>The future of AI in sports points to three things happening. First: it will be used to enhance coaching. It will help make tactics more creative and “refine decision-making in real time” to help coaches react to situations in games in the most accurate way possible.</p>
+          <p style="margin-top: 0.75rem;">Second: it will reshape how teams build rosters. Analytics in sport are growing, and AI will only accelerate this process: the days of Moneyball-style analytics and data are long gone. AI is making it easier for teams to find diamonds in the rough.</p>
+          <p style="margin-top: 0.75rem;">Finally, third: it will enhance the fan experience. We can look at Manchester City’s fan-designed third kit for the 2026/27 season, which was made with the help of AI. Sports are <em>"becoming a canvas for immersive, personalized experiences"</em>, of which AI is developing new ones every day.</p>
+
+          <!-- Fan-Designed Kit Picture Displayed -->
+          <figure style="margin: 1.5rem 0; text-align: center;">
+            <img src="citythird.jpeg" alt="Athletes wearing sports kit inspired by modern design and performance technology" style="width: 100%; max-width: 700px; border-radius: 8px; border: 1px solid var(--neon-purple); height: auto; box-shadow: 0 0 15px rgba(157,78,221,0.2);">
+            <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Manchester City's fan-designed third shirt for the 2026/27 season, partially designed by AI.</figcaption>
+          </figure>
+
+          <footer>
+            <p style="margin-bottom: 0;">
+              Trend Analysis:
+              <a class="media-link" href="https://www.thefuturelaboratory.com/blog/the-future-of-sport-and-ai-2025" target="_blank" rel="noopener noreferrer" style="color: var(--neon-purple); font-weight: 600;">
+                The Future Laboratory: Sport and AI Report &rarr;
+              </a>
+            </p>
+          </footer>
+        </div>
+      </details>
+
     </div>
 
-    <!-- PAGE FOOTER -->
-    <footer>
-        <p>&copy; 2026 AI in Sports Research Portal. All rights reserved.</p>
-        <nav aria-label="Footer Navigation">
-            <ul>
-                <li><a href="#officiating">Officiating</a></li>
-                <li><a href="#tennis">Tennis</a></li>
-                <li><a href="#history">History</a></li>
-                <li><a href="#medical">Medical</a></li>
-                <li><a href="#future">Future</a></li>
-            </ul>
-        </nav>
-    </footer>
+    <!-- INQUIRY FORM (BOTTOM SECTION) -->
+    <section id="ask-question" class="glass-card glow-cyan" style="padding: 2.5rem; border-radius: 12px;">
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <h2 style="color: var(--neon-cyan);">Have a Question?</h2>
+        <p style="color: var(--text-muted);">Fill out the inquiry form below to get in touch with our team</p>
+      </div>
+
+      <form action="/submit-question" method="post" class="hud-form">
+        <fieldset style="border: 1px solid var(--border-hud); border-radius: 8px; padding: 1.5rem; background: rgba(0, 0, 0, 0.2);">
+          <legend style="font-family: var(--font-heading); font-weight: bold; padding: 0 0.5rem; color: var(--neon-cyan);">Inquiry Form</legend>
+
+          <div class="inquiry-form-grid" style="margin-top: 0.5rem;">
+            <div>
+              <label for="user-name" style="display: block; font-family: var(--font-heading); font-size: 0.85rem; color: var(--neon-cyan); margin-bottom: 0.3rem;">Full Name *</label>
+              <input type="text" id="user-name" name="fullname" placeholder="Jane Doe" required>
+            </div>
+
+            <div>
+              <label for="user-email" style="display: block; font-family: var(--font-heading); font-size: 0.85rem; color: var(--neon-cyan); margin-bottom: 0.3rem;">Email Address *</label>
+              <input type="email" id="user-email" name="email" placeholder="jane@example.com" required>
+            </div>
+          </div>
+
+          <div style="margin-top: 1rem;">
+            <label for="topic" style="display: block; font-family: var(--font-heading); font-size: 0.85rem; color: var(--neon-cyan); margin-bottom: 0.3rem;">Topic Category *</label>
+            <select id="topic" name="topic" required>
+              <option value="" disabled selected>Select a topic...</option>
+              <option value="officiating">Officiating & VAR</option>
+              <option value="tennis">Court Systems & Hawkeye</option>
+              <option value="medical">Medical & Orthopedics</option>
+              <option value="future">Future Trends</option>
+              <option value="other">Other / General</option>
+            </select>
+          </div>
+
+          <div style="margin-top: 1rem;">
+            <label for="question" style="display: block; font-family: var(--font-heading); font-size: 0.85rem; color: var(--neon-cyan); margin-bottom: 0.3rem;">Your Question *</label>
+            <textarea id="question" name="question" rows="4" placeholder="Describe your question in detail..." required></textarea>
+          </div>
+
+          <div style="text-align: center; margin-top: 1.5rem;">
+            <button type="submit" class="btn-hud btn-green" style="width: 100%; max-width: 300px;">Submit Inquiry</button>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Universal Footer -->
+  <footer>
+    <p>&copy; 2026 AI in Sports Research Lab | Miami University, Oxford, OH</p>
+    <nav aria-label="Footer Navigation" style="margin-top: 0.75rem; display: flex; justify-content: center; gap: 1.5rem;">
+      <a href="#officiating" style="color: var(--neon-cyan); text-decoration: none; font-size: 0.85rem;">Officiating</a>
+      <a href="#tennis" style="color: var(--neon-cyan); text-decoration: none; font-size: 0.85rem;">Tennis</a>
+      <a href="#history" style="color: var(--neon-cyan); text-decoration: none; font-size: 0.85rem;">History</a>
+      <a href="#medical" style="color: var(--neon-cyan); text-decoration: none; font-size: 0.85rem;">Medical</a>
+      <a href="#future" style="color: var(--neon-cyan); text-decoration: none; font-size: 0.85rem;">Future</a>
+    </nav>
+  </footer>
 
 </body>
 

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | AI in Sports</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Compact SVG Framework Cards */
+        .svg-tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .svg-tech-card {
+            position: relative;
+            padding: 1rem 1rem 1rem 2.75rem;
+        }
+
+        .svg-corner-icon {
+            position: absolute;
+            top: 1rem;
+            left: 0.85rem;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .svg-corner-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .svg-card-content h3 {
+            margin: 0 0 0.25rem 0;
+            font-size: 1rem;
+        }
+
+        .svg-card-content p {
+            margin: 0;
+            font-size: 0.85rem;
+            line-height: 1.35;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        /* Collectible Player Trading Cards */
+        .grid-4-team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .team-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+            padding: 0 !important;
+        }
+
+        .player-hud-box {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .collectible-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+        }
+
+        .collectible-card-body {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .collectible-card-body h3 {
+            margin: 0.4rem 0;
+            font-size: 1.25rem;
+        }
+
+        .position-tag {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--neon-cyan);
+            font-weight: 700;
+        }
+
+        .linkedin-link {
+            margin-top: auto;
+            padding-top: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .linkedin-link:hover {
+            color: var(--neon-green);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Cyber Grid Background Layer -->
+    <div class="cyber-grid"></div>
+
+    <!-- Main Header Navigation -->
+    <header class="header">
+        <a href="home.html" class="brand-logo">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="var(--neon-cyan)" stroke-width="1.5" />
+                <path d="M12 2v20M2 12h20" stroke="rgba(0, 240, 255, 0.3)" stroke-width="1" />
+                <polygon points="13,3 7,13 12,13 11,21 17,11 12,11" fill="var(--neon-green)" />
+            </svg>
+            AI <span>IN SPORTS</span>
+        </a>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="info.html">Information</a>
+            <a href="faqs.html">FAQs</a>
+            <a href="about.html" class="active">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-container glass-card glow-cyan" style="margin: 2rem auto; max-width: 1200px;">
+        <div class="hero-content" style="max-width: 100%;">
+            <h1>Pioneering Athletic Intelligence</h1>
+            <p>We are a dedicated team of college students merging computational design, data analytics, and sports management to explore how artificial intelligence is transforming athletic performance, game-day strategy, and player safety.</p>
+            <div class="hero-actions">
+                <a href="#roster" class="btn-hud">Meet Starting Roster</a>
+                <a href="contact.html" class="btn-hud btn-green">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+       
+        <!-- Site Playbook Section -->
+        <h2 class="section-title" style="margin-top: 3.5rem;">The Playbook</h2>
+        <div class="grid-3">
+            <!-- Play 01 -->
+            <div class="glass-card glow-cyan" style="padding: 1.5rem;">
+                <h3 style="color: var(--neon-cyan); margin-bottom: 0.5rem;">Mission Statement</h3>
+                <p>Our mission is to demystify complex artificial intelligence concepts in sports, delivering actionable insights, predictive analytics, and dynamic visual tracking tools for modern athletes, coaches, and sports enthusiasts.</p>
+            </div>
+
+            <!-- Play 02 -->
+            <div class="glass-card glow-purple" style="padding: 1.5rem;">
+                <h3 style="color: var(--neon-purple); margin-bottom: 0.5rem;">What We Do</h3>
+                <p>We aggregate live performance data, model tactical game scenarios, and evaluate advanced computer vision applications—providing comprehensive breakdowns on how algorithmic intelligence shapes modern gameplay.</p>
+            </div>
+
+            <!-- Play 03 -->
+            <div class="glass-card glow-pink" style="padding: 1.5rem;">
+                <h3 style="color: var(--neon-pink); margin-bottom: 0.5rem;">Why It Matters</h3>
+                <p>From predictive injury prevention to real-time biometric analysis, machine learning is revolutionizing sports science. Understanding these technological shifts equips future leaders to drive innovation across athletics.</p>
+            </div>
+        </div>
+
+        <!-- Meet The Team Section -->
+        <h2 id="roster" class="section-title" style="margin-top: 3.5rem;">Starting Roster</h2>
+        <p style="margin-top: -0.5rem; color: rgba(255, 255, 255, 0.75);">Meet the Miami University student creators behind the project</p>
+
+        <div class="grid-4-team">
+
+            <!-- Player 1 -->
+            <div class="glass-card glow-cyan team-card">
+                <div class="player-hud-box">
+                    <img src="alyssa.jpg" alt="Alyssa Contreras" class="collectible-card-image" style="object-position: center 20%;">
+                </div>
+                <div class="collectible-card-body">
+                    <span class="position-tag">SLAM Major</span>
+                    <h3>Alyssa Contreras</h3>
+                    <p><strong>Fun Fact:</strong> I got to perform Phantom of the Opera at Carnegie Hall this past summer!</p>
+                    <a href="https://www.linkedin.com/in/alyssa-contreras-334396397?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                        LinkedIn Profile
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Player 2 -->
+            <div class="glass-card glow-purple team-card">
+                <div class="player-hud-box">
+                    <img src="calissa.jpg" alt="Calissa Barker" class="collectible-card-image">
+                </div>
+                <div class="collectible-card-body">
+                    <span class="position-tag" style="color: var(--neon-purple);">SLAM Major</span>
+                    <h3>Calissa Barker</h3>
+                    <p><strong>Fun Fact:</strong> I'm on the cheer team</p>
+                    <a href="https://www.linkedin.com/in/calissa-barker-b813a3341/" target="_blank" rel="noopener noreferrer" class="linkedin-link" style="color: var(--neon-purple);">
+                        LinkedIn Profile
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Player 3 -->
+            <div class="glass-card glow-pink team-card">
+                <div class="player-hud-box">
+                    <img src="kya.jpg" alt="Kya Moore" class="collectible-card-image">
+                </div>
+                <div class="collectible-card-body">
+                    <span class="position-tag" style="color: var(--neon-pink);">Design Major</span>
+                    <h3>Kya Moore</h3>
+                    <p><strong>Fun Fact:</strong> I have a twin brother</p>
+                    <a href="https://www.linkedin.com/in/kya-moore-2b8342390" target="_blank" rel="noopener noreferrer" class="linkedin-link" style="color: var(--neon-pink);">
+                        LinkedIn Profile
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Player 4 -->
+            <div class="glass-card glow-cyan team-card">
+                <div class="player-hud-box">
+                    <img src="jake.jpg" alt="Jake Zirolli" class="collectible-card-image">
+                </div>
+                <div class="collectible-card-body">
+                    <span class="position-tag">Team Member</span>
+                    <h3>Jake Zirolli</h3>
+                    <p><strong>Fun Fact:</strong> I'm learning how to speak Italian</p>
+                    <a href="https://www.linkedin.com/in/jake-zirolli-82344a381?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                        LinkedIn Profile
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Call to Action Card -->
+        <div class="glass-card glow-cyan" style="margin-top: 3.5rem; padding: 2rem; text-align: center;">
+            <h2 style="color: var(--neon-cyan); margin-bottom: 0.5rem;">Thanks for Reading!</h2>
+            <p style="max-width: 600px; margin: 0 auto 1.5rem auto;">Want to see how we put these concepts into practice? Check out our interactive breakdown or reach out directly to collaborate on our next project.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="contact.html" class="btn-hud">Contact Us</a>
+                <a href="home.html" class="btn-hud btn-green">Return Home</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 AI in Sports Research Lab | Miami University, Oxford, OH</p>
+    </footer>
+
+</body>
+
+</html>

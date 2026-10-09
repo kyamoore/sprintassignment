@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | AI in Sports</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Hero & Feature Responsive Media Layouts */
+    .hero-flex-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      flex: 1 1 500px;
+    }
+
+    .hero-image-wrapper {
+      flex: 1 1 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-hud-img {
+      width: 100%;
+      max-width: clamp(260px, 40vw, 480px);
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border-hud);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+      object-fit: cover;
+    }
+
+    /* Core Sector Feature Banner Image Sizing */
+    .feature-banner-wrapper {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .feature-banner-content {
+      flex: 1 1 500px;
+    }
+
+    .feature-banner-img {
+      flex: 1 1 280px;
+      width: 100%;
+      max-width: clamp(220px, 35vw, 380px);
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+      object-fit: cover;
+      margin: 0 auto;
+    }
+
+    /* Telemetry Pulse Dots */
+    .badge-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--neon-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--neon-green);
+      animation: pulseGlow 1.8s infinite ease-in-out;
+    }
+
+    .purple-dot { background-color: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
+    .pink-dot { background-color: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.4); }
+    }
+
+    .nav-card-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .hero-flex-wrapper,
+      .feature-banner-wrapper {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-hud-img,
+      .feature-banner-img {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cyber Grid Background Layer -->
+  <div class="cyber-grid"></div>
+
+  <!-- Header Navigation -->
+  <header>
+    <a href="home.html" class="brand-logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="var(--neon-cyan)" stroke-width="1.5" />
+        <path d="M12 2v20M2 12h20" stroke="rgba(0, 240, 255, 0.3)" stroke-width="1" />
+        <polygon points="13,3 7,13 12,13 11,21 17,11 12,11" fill="var(--neon-green)" />
+      </svg>
+      AI <span>IN SPORTS</span>
+    </a>
+    <nav aria-label="Main Navigation">
+      <a href="home.html" class="active">Home</a>
+      <a href="info.html">Information</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Sticky Category Jump Navigation -->
+  <div class="sticky-wrapper">
+    <nav class="category-nav">
+      <a href="info.html#overview">Overview</a>
+      <a href="info.html#soccer">Soccer</a>
+      <a href="info.html#basketball">Basketball</a>
+      <a href="info.html#baseball">Baseball</a>
+      <a href="info.html#football">Football</a>
+      <a href="info.html#golf">Golf</a>
+    </nav>
+  </div>
+
+  <!-- Hero Banner with Integrated Neural Network Image -->
+  <section class="container" style="padding-bottom: 0;">
+    <div class="glass-card hero-container glow-cyan">
+      <div class="hero-flex-wrapper">
+        <div class="hero-content">
+          <h1>Next-Gen Athletic Intelligence</h1>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Exploring how artificial intelligence, computer vision, and predictive analytics are reshaping modern athletics from local play to global competition[cite: 6].</p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="info.html" class="btn-hud">Explore Tech Modules</a>
+            <a href="about.html" class="btn-hud btn-green">Meet Roster</a>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <img src="aisport.png" alt="AI Neural Network in Sports" class="hero-hud-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <!-- Live Telemetry Badges with Animated Pulse Dots -->
+    <div class="telemetry-bar">
+      <div class="stat-item">
+        <div class="badge-header">
+          <span class="pulse-dot"></span>
+          <span class="stat-val">99.4%</span>
+        </div>
+        <p class="stat-lbl">Tracking Accuracy</p>
+      </div>
+
+      <div class="stat-item">
+        <div class="badge-header">
+          <span class="pulse-dot purple-dot"></span>
+          <span class="stat-val">10M+</span>
+        </div>
+        <p class="stat-lbl">Data Points / Game</p>
+      </div>
+
+      <div class="stat-item">
+        <div class="badge-header">
+          <span class="pulse-dot pink-dot"></span>
+          <span class="stat-val">-35%</span>
+        </div>
+        <p class="stat-lbl">Player Injury Rates</p>
+      </div>
+
+      <div class="stat-item">
+        <div class="badge-header">
+          <span class="pulse-dot"></span>
+          <span class="stat-val">0.02s</span>
+        </div>
+        <p class="stat-lbl">Officiating Latency</p>
+      </div>
+    </div>
+
+    <!-- Core Innovation Sectors Feature Banner -->
+    <h2 class="section-title" style="margin-bottom: 1.5rem; color: var(--neon-cyan);">Core Innovation Sectors</h2>
+    
+    <div class="glass-card glow-cyan" style="margin-bottom: 2.5rem;">
+      <div class="feature-banner-wrapper">
+        <div class="feature-banner-content">
+          <h3 style="color: var(--neon-cyan); margin-bottom: 0.75rem;">Modular Multi-Sport Telemetry</h3>
+          <p>By mapping multidimensional motion dynamics across sports equipment—from basketballs and soccer balls to golf and footballs—computer vision algorithms capture geometric trajectories in real-time. High-frame-rate cameras analyze spin rates, velocity vectors, and impact coordinates instantly.</p>
+          <p>These algorithmic insights feed dynamic tactical engines, granting coaches and performance labs deep biometric and tactical feedback to optimize player longevity and strategy.</p>
+        </div>
+        <img src="sportcubes.webp" alt="3D Geometric Sports Cubes" class="feature-banner-img">
+      </div>
+    </div>
+
+    <!-- Grid Highlights -->
+    <div class="grid-3">
+      <div class="glass-card glow-purple">
+        <h3 style="color: var(--neon-purple); margin-bottom: 0.5rem;">Predictive Biomechanics</h3>
+        <p>Wearable IoT telemetry and machine learning models analyze motion patterns to predict muscle fatigue and mitigate potential orthopedic injuries before they occur[cite: 6].</p>
+      </div>
+      <div class="glass-card glow-pink">
+        <h3 style="color: var(--neon-pink); margin-bottom: 0.5rem;">Sabermetrics 2.0</h3>
+        <p>Deep learning algorithms aggregate player historical data and spatial coordinates to formulate optimal in-game tactical positioning and dynamic gameplans[cite: 6].</p>
+      </div>
+      <div class="glass-card glow-cyan">
+        <h3 style="color: var(--neon-cyan); margin-bottom: 0.5rem;">Generative Strategy</h3>
+        <p>Simulating millions of game scenarios per minute enables coaches to evaluate high-yield tactical adjustments and optimize athlete rotation lineups.</p>
+      </div>
+    </div>
+
+    <!-- Site Playbook Grid -->
+    <h2 class="section-title" style="margin: 3.5rem 0 1.5rem; color: var(--neon-cyan);">Site Playbook</h2>
+    <div class="grid-4">
+      <a href="info.html" class="nav-card-link">
+        <div class="glass-card glow-cyan" style="text-align: center;">
+          <h3 style="color: var(--neon-cyan);">Information</h3>
+          <p style="font-size: 0.95rem;">Deep dive into specific sports disciplines[cite: 6].</p>
+        </div>
+      </a>
+      <a href="faqs.html" class="nav-card-link">
+        <div class="glass-card glow-purple" style="text-align: center;">
+          <h3 style="color: var(--neon-purple);">FAQs</h3>
+          <p style="font-size: 0.95rem;">Interactive query portal and search engine[cite: 6].</p>
+        </div>
+      </a>
+      <a href="about.html" class="nav-card-link">
+        <div class="glass-card glow-pink" style="text-align: center;">
+          <h3 style="color: var(--neon-pink);">About Us</h3>
+          <p style="font-size: 0.95rem;">Meet our Miami University creator roster[cite: 6].</p>
+        </div>
+      </a>
+      <a href="contact.html" class="nav-card-link">
+        <div class="glass-card glow-cyan" style="text-align: center;">
+          <h3 style="color: var(--neon-cyan);">Contact</h3>
+          <p style="font-size: 0.95rem;">Send telemetry or submit general inquiries[cite: 6].</p>
+        </div>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Universal Footer -->
+  <footer>
+    <p>&copy; 2026 AI in Sports Research Lab | Miami University, Oxford, OH</p>
+  </footer>
+
+</body>
+</html>
